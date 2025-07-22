@@ -120,3 +120,14 @@
     @apply bg-background text-foreground;
   }
 }
+:root {
+  --font-playfair: 'Playfair Display', serif;
+  --font-opensans: 'Open Sans', sans-serif;
+}
+.font-playfair {
+  font-family: var(--font-playfair);
+}
+
+.font-opensans {
+  font-family: var(--font-opensans);
+}

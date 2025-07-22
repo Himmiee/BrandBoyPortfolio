@@ -19,12 +19,12 @@ export const BackgroundImageWrapper: React.FC<BackgroundImageWrapperProps> = ({
   priority = false,
 }) => {
   return (
-    <div className={`relative w-full bg-amber-100 overflow-hidden ${className}`}>
+    <div className={`relative w-full overflow-hidden ${className}`}>
       <Image
         src={image}
         alt={alt}
         fill
-        className="object-cover"
+        className="object-cover "
         priority={priority}
       />
       <div className={`absolute inset-0 ${overlayClassName}`} />
