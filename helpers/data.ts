@@ -6,7 +6,6 @@ import {
 } from "react-icons/fa";
 import { IoLogoTiktok } from "react-icons/io5";
 import { GrFacebookOption } from "react-icons/gr";
-import React from "react";
 import { ISocialIcon } from "@/types/interface/hero.interface";
 
 
@@ -20,3 +19,4 @@ export const socialIcons: ISocialIcon[] = [
 ];
 
 export const navLinks: string[] = ["PROJECTS", "ABOUT US", "CONTACT US"];
+

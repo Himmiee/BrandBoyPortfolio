@@ -8,7 +8,7 @@ export const HeroSection: React.FC = () => {
       <Image
         src={heroImg}
         alt="Hero image"
-        className="w-full h-auto object-cover"
+        className="w-full h-80 md:h-auto object-cover"
         priority
       />
     </section>
