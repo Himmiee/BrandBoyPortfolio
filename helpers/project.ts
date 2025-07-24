@@ -6,6 +6,28 @@ import EloquenciaImgFour from "@/public/projects/Eloquencia/Eloquencia-four.webp
 import EloquenciaImgFive from "@/public/projects/Eloquencia/Eloquencia-five.webp";
 import EloquenciaImgSix from "@/public/projects/Eloquencia/Eloquencia-six.webp";
 import EloquenciaImgSeven from "@/public/projects/Eloquencia/Eloquencia-seven.webp";
+import ResilenciaImgOne from "@/public/projects/RESILENCIA/RESILENCIA_1.webp";
+import ResilenciaImgTwo from "@/public/projects/RESILENCIA/RESILENCIA_2.webp";
+import ResilenciaImgThreee from "@/public/projects/RESILENCIA/RESILENCIA_3.webp";
+import ResilenciaImgFour from "@/public/projects/RESILENCIA/RESILENCIA_4.webp";
+import ResilenciaImgFive from "@/public/projects/RESILENCIA/RESILENCIA_5.webp";
+import PSBImgOne from "@/public/projects/PSB/PSB_1.webp";
+import PSBImgTwo from "@/public/projects/PSB/PSB_2.webp";
+import PSBImgThreee from "@/public/projects/PSB/PSB_3.webp";
+import PSBImgFour from "@/public/projects/PSB/PSB_4.webp";
+import PSBImgFive from "@/public/projects/PSB/PSB_5.webp";
+import PSBImgSix from "@/public/projects/PSB/PSB_6.webp";
+import PSBImgSeven from "@/public/projects/PSB/PSB_7.webp";
+import PSBImgEight from "@/public/projects/PSB/PSB_8.webp";
+import PSBImgNine from "@/public/projects/PSB/PSB_9.webp";
+import PSBImgTen from "@/public/projects/PSB/PSB_10.webp";
+import TDCImgOne from "@/public/projects/TDC/DSC_1.webp";
+import TDCImgTwo from "@/public/projects/TDC/DSC_2.webp";
+import TDCImgThreee from "@/public/projects/TDC/DSC_3.webp";
+import TDCImgFour from "@/public/projects/TDC/DSC_4.webp";
+import TDCImgFive from "@/public/projects/TDC/DSC_5.webp";
+import TDCImgSix from "@/public/projects/TDC/DSC_6.webp";
+import TDCImgSeven from "@/public/projects/TDC/DSC_7.webp";
 
 export const projects: IProject[] = [
   {
@@ -51,31 +73,23 @@ export const projects: IProject[] = [
       "Lorem ipsum dolor sit Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet",
     images: [
       {
-        src: EloquenciaImgOne.src,
+        src: ResilenciaImgOne.src,
         alt: "Modern dining room with warm tones and contemporary furniture",
       },
       {
-        src: EloquenciaImgTwo.src,
+        src: ResilenciaImgTwo.src,
         alt: "Close-up of lighting design in Project Eloquencia",
       },
       {
-        src: EloquenciaImgThreee.src,
+        src: ResilenciaImgThreee.src,
         alt: "Modern dining room with warm tones and contemporary furniture",
       },
       {
-        src: EloquenciaImgFour.src,
+        src: ResilenciaImgFour.src,
         alt: "Close-up of lighting design in Project Eloquencia",
       },
       {
-        src: EloquenciaImgFive.src,
-        alt: "Modern dining room with warm tones and contemporary furniture",
-      },
-      {
-        src: EloquenciaImgSix.src,
-        alt: "Close-up of lighting design in Project Eloquencia",
-      },
-      {
-        src: EloquenciaImgSeven.src,
+        src: ResilenciaImgFive.src,
         alt: "Modern dining room with warm tones and contemporary furniture",
       },
     ],
@@ -87,32 +101,44 @@ export const projects: IProject[] = [
       "Lorem ipsum dolor sit Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet",
     images: [
       {
-        src: EloquenciaImgOne.src,
+        src: PSBImgOne.src,
         alt: "Modern dining room with warm tones and contemporary furniture",
       },
       {
-        src: EloquenciaImgTwo.src,
+        src: PSBImgTwo.src,
         alt: "Close-up of lighting design in Project Eloquencia",
       },
       {
-        src: EloquenciaImgThreee.src,
+        src: PSBImgThreee.src,
         alt: "Modern dining room with warm tones and contemporary furniture",
       },
       {
-        src: EloquenciaImgFour.src,
+        src: PSBImgFour.src,
         alt: "Close-up of lighting design in Project Eloquencia",
       },
       {
-        src: EloquenciaImgFive.src,
+        src: PSBImgFive.src,
         alt: "Modern dining room with warm tones and contemporary furniture",
       },
       {
-        src: EloquenciaImgSix.src,
+        src: PSBImgSix.src,
         alt: "Close-up of lighting design in Project Eloquencia",
       },
       {
-        src: EloquenciaImgSeven.src,
+        src: PSBImgSeven.src,
         alt: "Modern dining room with warm tones and contemporary furniture",
+      },
+      {
+        src: PSBImgEight.src,
+        alt: "Close-up of lighting design in Project Eloquencia",
+      },
+      {
+        src: PSBImgNine.src,
+        alt: "Modern dining room with warm tones and contemporary furniture",
+      },
+      {
+        src: PSBImgTen.src,
+        alt: "Close-up of lighting design in Project Eloquencia",
       },
     ],
   },
@@ -123,31 +149,31 @@ export const projects: IProject[] = [
       "Lorem ipsum dolor sit Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet",
     images: [
       {
-        src: EloquenciaImgOne.src,
+        src: TDCImgOne.src,
         alt: "Modern dining room with warm tones and contemporary furniture",
       },
       {
-        src: EloquenciaImgTwo.src,
+        src: TDCImgTwo.src,
         alt: "Close-up of lighting design in Project Eloquencia",
       },
       {
-        src: EloquenciaImgThreee.src,
+        src: TDCImgThreee.src,
         alt: "Modern dining room with warm tones and contemporary furniture",
       },
       {
-        src: EloquenciaImgFour.src,
+        src: TDCImgFour.src,
         alt: "Close-up of lighting design in Project Eloquencia",
       },
       {
-        src: EloquenciaImgFive.src,
+        src: TDCImgFive.src,
         alt: "Modern dining room with warm tones and contemporary furniture",
       },
       {
-        src: EloquenciaImgSix.src,
+        src: TDCImgSix.src,
         alt: "Close-up of lighting design in Project Eloquencia",
       },
       {
-        src: EloquenciaImgSeven.src,
+        src: TDCImgSeven.src,
         alt: "Modern dining room with warm tones and contemporary furniture",
       },
     ],
