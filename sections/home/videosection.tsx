@@ -13,7 +13,7 @@ export const VideoSection: React.FC = () => {
   return (
     <section className="relative">
       <BackgroundImageWrapper image={vidImg} alt="Video section background">
-        <div className="relative z-10 flex flex-col items-center justify-center text-center font-opensans min-h-[70vh] lg:min-h-[80vh] gap-8 text-white px-4 py-16 lg:py-24 space-y-16">
+        <div className="relative z-10 flex flex-col items-center justify-center text-center font-opensans min-h-[70vh] md:min-h-[50vh] lg:min-h-[80vh] gap-8 text-white px-4 py-16 lg:py-24 space-y-16">
           {showVideo ? (
             <div className="w-full ">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-black border border-white/10">
