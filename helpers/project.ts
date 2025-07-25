@@ -11,6 +11,22 @@ import ResilenciaImgTwo from "@/public/projects/RESILENCIA/RESILENCIA_2.webp";
 import ResilenciaImgThreee from "@/public/projects/RESILENCIA/RESILENCIA_3.webp";
 import ResilenciaImgFour from "@/public/projects/RESILENCIA/RESILENCIA_4.webp";
 import ResilenciaImgFive from "@/public/projects/RESILENCIA/RESILENCIA_5.webp";
+import ResilenciaImgSix from "@/public/projects/RESILENCIA/RESILENCIA_6.webp";
+import ResilenciaImgSeven from "@/public/projects/RESILENCIA/RESILENCIA_7.webp";
+import ResilenciaImgEight from "@/public/projects/RESILENCIA/RESILENCIA_8.webp";
+import ResilenciaImgNine from "@/public/projects/RESILENCIA/RESILENCIA_9.webp";
+import ResilenciaImgTen from "@/public/projects/RESILENCIA/RESILENCIA_10.webp";
+import ResilenciaImgEleven from "@/public/projects/RESILENCIA/RESILENCIA_11.webp";
+import ResilenciaImgTwelve from "@/public/projects/RESILENCIA/RESILENCIA_12.webp";
+import ResilenciaImgThirteen from "@/public/projects/RESILENCIA/RESILENCIA_13.webp";
+import ResilenciaImgFourteen from "@/public/projects/RESILENCIA/RESILENCIA_14.webp";
+import ResilenciaImgFifteen from "@/public/projects/RESILENCIA/RESILENCIA_15.webp";
+import ResilenciaImgSixteen from "@/public/projects/RESILENCIA/RESILENCIA_16.webp";
+import ResilenciaImgSeventeen from "@/public/projects/RESILENCIA/RESILENCIA_17.webp";
+// import ResilenciaImgEighteen from "@/public/projects/RESILENCIA/RESILENCIA_18.webp";
+// import ResilenciaImgNineteen from "@/public/projects/RESILENCIA/RESILENCIA_19.webp";
+// import ResilenciaImgTwenty from "@/public/projects/RESILENCIA/RESILENCIA_20.webp";
+// import ResilenciaImgTwentyOne from "@/public/projects/RESILENCIA/RESILENCIA_21.webp";
 import PSBImgOne from "@/public/projects/PSB/PSB_1.webp";
 import PSBImgTwo from "@/public/projects/PSB/PSB_2.webp";
 import PSBImgThreee from "@/public/projects/PSB/PSB_3.webp";
@@ -91,6 +107,54 @@ export const projects: IProject[] = [
       {
         src: ResilenciaImgFive.src,
         alt: "Modern dining room with warm tones and contemporary furniture",
+      },
+      {
+        src: ResilenciaImgSix.src,
+        alt: "Modern dining room with warm tones and contemporary furniture",
+      },
+      {
+        src: ResilenciaImgSeven.src,
+        alt: "Close-up of lighting design in Project Eloquencia",
+      },
+      {
+        src: ResilenciaImgEight.src,
+        alt: "Modern dining room with warm tones and contemporary furniture",
+      },
+      {
+        src: ResilenciaImgNine.src,
+        alt: "Close-up of lighting design in Project Eloquencia",
+      },
+      {
+        src: ResilenciaImgTen.src,
+        alt: "Modern dining room with warm tones and contemporary furniture",
+      },
+      {
+        src: ResilenciaImgEleven.src,
+        alt: "Modern dining room with warm tones and contemporary furniture",
+      },
+      {
+        src: ResilenciaImgTwelve.src,
+        alt: "Close-up of lighting design in Project Eloquencia",
+      },
+      {
+        src: ResilenciaImgThirteen.src,
+        alt: "Modern dining room with warm tones and contemporary furniture",
+      },
+      {
+        src: ResilenciaImgFourteen.src,
+        alt: "Close-up of lighting design in Project Eloquencia",
+      },
+      {
+        src: ResilenciaImgFifteen.src,
+        alt: "Modern dining room with warm tones and contemporary furniture",
+      },
+      {
+        src: ResilenciaImgSixteen.src,
+        alt: "Modern dining room with warm tones and contemporary furniture",
+      },
+      {
+        src: ResilenciaImgSeventeen.src,
+        alt: "Close-up of lighting design in Project Eloquencia",
       },
     ],
   },
