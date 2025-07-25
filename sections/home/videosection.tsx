@@ -38,7 +38,7 @@ export const VideoSection: React.FC = () => {
             </div>
           ) : (
             <>
-              <div className="space-y-8 md:space-y-16 max-w-4xl">
+              <div className="space-y-16 max-w-4xl">
                 <p className="text-sm md:text-base font-medium tracking-[0.2em] uppercase opacity-80">
                   Video Feature
                 </p>
