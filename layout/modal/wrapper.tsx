@@ -31,12 +31,12 @@ export const Modal = ({
         className={`relative z-20 w-full max-w-3xl bg-white shadow-lg p-6 ${className}`}
       >
         {/* Close Button */}
-        {/* <button
+        <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-30 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors"
+          className="absolute top-4 right-4 z-30 p-2 cursor-pointer bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors"
         >
           <X size={20} />
-        </button> */}
+        </button>
 
         {children}
       </div>

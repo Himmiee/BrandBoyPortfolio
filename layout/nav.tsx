@@ -1,10 +1,9 @@
 "use client";
 import { navLinks, socialIcons } from "@/helpers/data";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Modal } from "./modal/wrapper";
 import { ContactForm } from "./forms/contact";
-
 
 export const NavComponent: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,9 +14,14 @@ export const NavComponent: React.FC = () => {
   };
 
   const openContactModal = () => {
-    setIsMobileMenuOpen(false); // optional: close mobile menu if open
+    setIsMobileMenuOpen(false);
     setShowContactModal(true);
   };
+  useEffect(() => {
+    setTimeout(() => {
+      setShowContactModal(true);
+    }, 2000);
+  }, []);
 
   return (
     <div className="bg-white max-w-7xl mx-auto font-opensans">
