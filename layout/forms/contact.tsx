@@ -31,7 +31,7 @@ export const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto font-opensans">
+    <div className="w-full max-w-lg mx-auto font-opensans max-h-[80vh] overflow-auto hide-scrollbar">
       {/* Logo & Tagline */}
       <div className="mb-6 text-center">
         <div className="flex items-center justify-center gap-3 pt-5 pb-2">
@@ -48,7 +48,7 @@ export const ContactForm: React.FC = () => {
           Management
         </p>
 
-        <p className="pt-8 pb-4 font-bold text-xl md:text-4xl">
+        <p className="py-4  font-bold text-xl md:text-[34px]">
           Let’s Bring Your Vision to Life
         </p>
       </div>
