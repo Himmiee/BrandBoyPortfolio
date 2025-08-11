@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { IProject } from "@/types/interface/hero.interface";
@@ -16,15 +16,15 @@ interface ProjectModalProps {
 
 export const ProjectModal = ({ project, open, onClose }: ProjectModalProps) => {
   const [isPlaying, setIsPlaying] = useState(true);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-  const [loadedCount, setLoadedCount] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [showContent, setShowContent] = useState(false);
 
   // Check if mobile screen
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768); 
+      setIsMobile(window.innerWidth < 768);
     };
 
     checkMobile();
@@ -32,42 +32,54 @@ export const ProjectModal = ({ project, open, onClose }: ProjectModalProps) => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // Reset states when modal opens/closes
   useEffect(() => {
     if (open) {
       setIsPlaying(true);
-      setImagesLoaded(false);
-      setLoadedCount(0);
+      setLoadedImages(new Set());
       setCurrentImageIndex(0);
+      setShowContent(false);
     } else {
       setIsPlaying(false);
-      setImagesLoaded(false);
-      setLoadedCount(0);
+      setLoadedImages(new Set());
       setCurrentImageIndex(0);
+      setShowContent(false);
     }
-  }, [open]);
+  }, [open, project?.id]); // Include project.id to reset when project changes
 
+  // Show content after first few images load (progressive loading)
   useEffect(() => {
-    if (!isMobile || !isPlaying || !imagesLoaded || !project) return;
+    if (!project) return;
+
+    const minImagesToShow = Math.min(3, project.images.length);
+    if (loadedImages.size >= minImagesToShow && !showContent) {
+      setShowContent(true);
+    }
+  }, [loadedImages.size, project, showContent]);
+
+  // Auto-advance for mobile
+  useEffect(() => {
+    if (!isMobile || !isPlaying || !showContent || !project) return;
 
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) =>
         prev === project.images.length - 1 ? 0 : prev + 1
       );
-    }, 3000); // Change image every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
-  }, [isMobile, isPlaying, imagesLoaded, project]);
+  }, [isMobile, isPlaying, showContent, project]);
 
-  // Track image loading
-  const handleImageLoad = () => {
-    setLoadedCount((prev) => {
-      const newCount = prev + 1;
-      if (project && newCount >= project.images.length) {
-        setImagesLoaded(true);
-      }
-      return newCount;
-    });
-  };
+  // Track image loading with better error handling
+  const handleImageLoad = useCallback((imageIndex: number) => {
+    setLoadedImages((prev) => new Set(prev).add(imageIndex));
+  }, []);
+
+  const handleImageError = useCallback((imageIndex: number) => {
+    console.warn(`Failed to load image ${imageIndex}`);
+    // Still mark as "loaded" so we don't wait forever
+    setLoadedImages((prev) => new Set(prev).add(imageIndex));
+  }, []);
 
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
@@ -89,6 +101,10 @@ export const ProjectModal = ({ project, open, onClose }: ProjectModalProps) => {
 
   if (!project) return null;
 
+  const totalImages = project.images.length;
+  const loadedCount = loadedImages.size;
+  const isCurrentImageLoaded = loadedImages.has(currentImageIndex);
+
   return (
     <Modal
       isOpen={open}
@@ -101,164 +117,190 @@ export const ProjectModal = ({ project, open, onClose }: ProjectModalProps) => {
           className="relative w-full bg-gray-50"
           style={{ height: "60vh", minHeight: "300px" }}
         >
-          {/* Loading State */}
-          {!imagesLoaded && (
+          {/* Loading State - Only show if we haven't loaded enough images yet */}
+          {!showContent && (
             <div className="absolute inset-0 bg-gray-100 flex flex-col items-center justify-center z-20">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-600 mb-2"></div>
               <p className="text-gray-600 text-sm">
-                Loading images... ({loadedCount}/{project.images.length})
+                Loading images... ({loadedCount}/{totalImages})
               </p>
+              <div className="w-48 bg-gray-200 rounded-full h-2 mt-2">
+                <div
+                  className="bg-gray-600 h-2 rounded-full transition-all duration-300"
+                  style={{ width: `${(loadedCount / totalImages) * 100}%` }}
+                ></div>
+              </div>
             </div>
           )}
+
+          {/* Hidden preloader images - load prioritized images first */}
+          {project.images.map((img, idx) => (
+            <Image
+              key={`preload-${idx}`}
+              src={img.src}
+              alt=""
+              width={1}
+              height={1}
+              className="absolute opacity-0 pointer-events-none"
+              onLoad={() => handleImageLoad(idx)}
+              onError={() => handleImageError(idx)}
+              priority={idx < 3} // Prioritize first 3 images
+              loading={idx < 3 ? "eager" : "lazy"}
+            />
+          ))}
 
           {/* Mobile View - Single Image with Navigation */}
-          {isMobile ? (
-            <div className="relative w-full h-full">
-              {project.images.map((img, idx) => (
-                <Image
-                  key={`preload-${idx}`}
-                  src={img.src}
-                  alt={img.alt}
-                  width={1}
-                  height={1}
-                  className="absolute opacity-0 pointer-events-none"
-                  onLoad={handleImageLoad}
-                  priority={idx < 3}
-                />
-              ))}
+          {isMobile
+            ? showContent && (
+                <div className="relative w-full h-full">
+                  {/* Current Image */}
+                  <div className="relative w-full h-full">
+                    {!isCurrentImageLoaded && (
+                      <div className="absolute inset-0 bg-gray-100 flex items-center justify-center z-10">
+                        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-600"></div>
+                      </div>
+                    )}
 
-              <div className="relative w-full h-full">
-                <Image
-                  src={project.images[currentImageIndex]?.src}
-                  alt={project.images[currentImageIndex]?.alt}
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="95vw"
-                />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="text-sm font-medium">
-                      {project.images[currentImageIndex]?.alt}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Navigation Arrows */}
-              {imagesLoaded && project.images.length > 1 && (
-                <>
-                  <button
-                    onClick={goToPrevious}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 border border-white/20 text-white hover:bg-black/70 rounded-full p-3 transition-all duration-200"
-                    title="Previous image"
-                  >
-                    <ChevronLeft size={20} />
-                  </button>
-
-                  <button
-                    onClick={goToNext}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 border border-white/20 text-white hover:bg-black/70 rounded-full p-3 transition-all duration-200"
-                    title="Next image"
-                  >
-                    <ChevronRight size={20} />
-                  </button>
-                </>
-              )}
-
-              {/* Image Indicators */}
-              {imagesLoaded && project.images.length > 1 && (
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
-                  {project.images.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentImageIndex(idx)}
-                      className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                        idx === currentImageIndex
-                          ? "bg-white"
-                          : "bg-white/50 hover:bg-white/75"
-                      }`}
+                    <Image
+                      src={project.images[currentImageIndex]?.src}
+                      alt={project.images[currentImageIndex]?.alt}
+                      fill
+                      className="object-cover"
+                      sizes="95vw"
+                      priority={currentImageIndex < 3}
                     />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4 text-white">
+                        <p className="text-sm font-medium">
+                          {project.images[currentImageIndex]?.alt}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Navigation Arrows */}
+                  {project.images.length > 1 && (
+                    <>
+                      <button
+                        onClick={goToPrevious}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 border border-white/20 text-white hover:bg-black/70 rounded-full p-3 transition-all duration-200"
+                        title="Previous image"
+                      >
+                        <ChevronLeft size={20} />
+                      </button>
+
+                      <button
+                        onClick={goToNext}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 border border-white/20 text-white hover:bg-black/70 rounded-full p-3 transition-all duration-200"
+                        title="Next image"
+                      >
+                        <ChevronRight size={20} />
+                      </button>
+                    </>
+                  )}
+
+                  {/* Image Indicators */}
+                  {project.images.length > 1 && (
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+                      {project.images.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setCurrentImageIndex(idx)}
+                          className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                            idx === currentImageIndex
+                              ? "bg-white"
+                              : "bg-white/50 hover:bg-white/75"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )
+            : /* Desktop View - Marquee Slideshow */
+              showContent && (
+                <Marquee
+                  speed={30}
+                  pauseOnHover={true}
+                  pauseOnClick={true}
+                  play={isPlaying}
+                  gradient={true}
+                  gradientColor="white"
+                  gradientWidth={100}
+                  className="h-full"
+                >
+                  {/* First set of images */}
+                  {project.images.map((img, idx) => (
+                    <div
+                      key={`${project.id}-${idx}`}
+                      className="relative mx-4 h-full"
+                      style={{
+                        width: "400px",
+                        minWidth: "400px",
+                        height: "60vh",
+                        minHeight: "300px",
+                      }}
+                    >
+                      <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg">
+                        {!loadedImages.has(idx) && (
+                          <div className="absolute inset-0 bg-gray-100 flex items-center justify-center z-10 rounded-lg">
+                            <div className="animate-pulse bg-gray-200 w-full h-full rounded-lg"></div>
+                          </div>
+                        )}
+
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          fill
+                          className="object-cover hover:scale-105 transition-transform duration-300"
+                          sizes="400px"
+                          priority={idx < 3}
+                        />
+
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute bottom-4 left-4 text-white">
+                            <p className="text-sm font-medium">{img.alt}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   ))}
-                </div>
+
+                  {/* Duplicate set for continuous loop */}
+                  {project.images.map((img, idx) => (
+                    <div
+                      key={`${project.id}-duplicate-${idx}`}
+                      className="relative mx-4 h-full"
+                      style={{
+                        width: "400px",
+                        minWidth: "400px",
+                        height: "60vh",
+                        minHeight: "300px",
+                      }}
+                    >
+                      <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg">
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          fill
+                          className="object-cover hover:scale-105 transition-transform duration-300"
+                          sizes="400px"
+                        />
+
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute bottom-4 left-4 text-white">
+                            <p className="text-sm font-medium">{img.alt}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </Marquee>
               )}
-            </div>
-          ) : (
-            /* Desktop View -  Slideshow */
-            <Marquee
-              speed={30}
-              pauseOnHover={true}
-              pauseOnClick={true}
-              play={isPlaying && imagesLoaded}
-              gradient={true}
-              gradientColor="white"
-              gradientWidth={100}
-              className="h-full"
-            >
-              {project.images.map((img, idx) => (
-                <div
-                  key={`${project.id}-${idx}`}
-                  className="relative mx-4 h-full"
-                  style={{
-                    width: "400px",
-                    minWidth: "400px",
-                    height: "60vh",
-                    minHeight: "300px",
-                  }}
-                >
-                  <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg">
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      priority={idx < 3}
-                      className="object-cover hover:scale-105 transition-transform duration-300"
-                      sizes="400px"
-                      onLoad={handleImageLoad}
-                    />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-4 left-4 text-white">
-                        <p className="text-sm font-medium">{img.alt}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-
-              {project.images.map((img, idx) => (
-                <div
-                  key={`${project.id}-duplicate-${idx}`}
-                  className="relative mx-4 h-full"
-                  style={{
-                    width: "400px",
-                    minWidth: "400px",
-                    height: "60vh",
-                    minHeight: "300px",
-                  }}
-                >
-                  <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg">
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      className="object-cover hover:scale-105 transition-transform duration-300"
-                      sizes="400px"
-                    />
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-4 left-4 text-white">
-                        <p className="text-sm font-medium">{img.alt}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </Marquee>
-          )}
-
-          {imagesLoaded && (
+          {/* Controls - only show when content is visible */}
+          {showContent && (
             <>
               {/* Play/Pause Button */}
               <button
@@ -271,9 +313,15 @@ export const ProjectModal = ({ project, open, onClose }: ProjectModalProps) => {
 
               {/* Image Count */}
               <div className="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm z-10 md:block hidden">
-                {project.images.length} images
+                {totalImages} images
+                {loadedCount < totalImages && (
+                  <span className="ml-1 text-white/70">
+                    • {loadedCount} loaded
+                  </span>
+                )}
               </div>
 
+              {/* Desktop Instructions */}
               {!isMobile && (
                 <div className="absolute bottom-4 left-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm z-10">
                   Hover to pause • Click to pause
@@ -283,7 +331,7 @@ export const ProjectModal = ({ project, open, onClose }: ProjectModalProps) => {
           )}
         </div>
 
-        {/* Project Info */}
+        {/* Project Info - always show */}
         <div className="px-0 py-6 md:p-6 bg-white">
           <div className="flex items-start justify-between">
             <div className="flex-1">
@@ -302,7 +350,14 @@ export const ProjectModal = ({ project, open, onClose }: ProjectModalProps) => {
                 ? "Auto-advance slideshow • Use arrows to navigate"
                 : "Continuous slideshow • Hover or click to pause"}
             </span>
-            <span>{project.images.length} images total</span>
+            <span>
+              {totalImages} images total
+              {showContent && loadedCount < totalImages && (
+                <span className="ml-2 text-gray-500">
+                  • Loading {totalImages - loadedCount} more...
+                </span>
+              )}
+            </span>
           </div>
         </div>
       </div>
