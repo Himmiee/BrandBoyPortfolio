@@ -31,14 +31,14 @@ export const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-lg mx-auto font-opensans max-h-[80vh] overflow-auto hide-scrollbar">
+    <div className="w-full max-w-lg mx-auto font-opensans">
       {/* Logo & Tagline */}
-      <div className="mb-6 text-center">
+      <div className="mb-2 text-center">
         <div className="flex items-center justify-center gap-3 pt-5 pb-2">
           <Image
             src={BLogo}
             alt="BrandBoy Icon"
-            className="w-10 h-10 md:w-14 md:h-14"
+            className="w-8 h-8"
             priority
           />
         </div>
@@ -48,7 +48,7 @@ export const ContactForm: React.FC = () => {
           Management
         </p>
 
-        <p className="py-4  font-bold text-xl md:text-[34px]">
+        <p className="py-1  font-bold text-xl md:text-[34px]">
           Let’s Bring Your Vision to Life
         </p>
       </div>

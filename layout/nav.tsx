@@ -30,7 +30,7 @@ export const NavComponent: React.FC = () => {
 
   return (
     <div className=" max-w-7xl mx-auto font-opensans">
-      <nav className="p-4 pb-2 md:p-8 flex items-center justify-between  md:pt-4 ">
+      <nav className="p-4 pb-2 md:p-8 flex items-center justify-between  md:pt-6 ">
         <div className="flex items-center">
           <Image src={BLogo} alt="BrandBoy Icon" className="h-9 w-9" priority />
         </div>
