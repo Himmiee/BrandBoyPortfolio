@@ -4,7 +4,7 @@ import heroImg from "@/public/home/hero-img.webp";
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="w-full h-auto max-w-7xl mx-auto p-4 md:px-8 md:py-16">
+    <section className="w-full h-auto max-w-7xl mx-auto p-4 md:px-8 md:py-8 md:pb-12">
       <Image
         src={heroImg}
         alt="Hero image"

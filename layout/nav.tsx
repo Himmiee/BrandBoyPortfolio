@@ -29,8 +29,8 @@ export const NavComponent: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-white max-w-7xl mx-auto font-opensans">
-      <nav className="p-4 pb-2 md:p-8 flex items-center justify-between  md:pt-8 ">
+    <div className=" max-w-7xl mx-auto font-opensans">
+      <nav className="p-4 pb-2 md:p-8 flex items-center justify-between  md:pt-4 ">
         <div className="flex items-center">
           <Image src={BLogo} alt="BrandBoy Icon" className="h-9 w-9" priority />
         </div>
@@ -74,12 +74,12 @@ export const NavComponent: React.FC = () => {
         <Image
           src={BLogoWatermark}
           alt="BrandBoy Wordmark"
-          className="h-6 w-auto mx-auto"
+          className="h-7 w-auto mx-auto"
           priority
         />
       </div>
 
-      <div className="hidden md:flex px-8 py-8 justify-center gap-32 font-myriad">
+      <div className="hidden md:flex px-8 py-2 justify-between max-w-3xl mx-auto font-myriad">
         {navLinks.map((link, idx) => {
           const isContact = link.toLowerCase().includes("contact");
           return (
@@ -91,7 +91,7 @@ export const NavComponent: React.FC = () => {
                   ? undefined
                   : `#${link.toLowerCase().replace(/\s+/g, "")}`
               }
-              className="text-[36px] md:text-[30px] lg:text-[36px] font-medium text-black hover:text-gray-600 transition-colors cursor-pointer"
+              className="text-[30px]  font-medium text-black hover:text-gray-600 transition-colors cursor-pointer"
             >
               {link}
             </a>
@@ -147,7 +147,7 @@ export const NavComponent: React.FC = () => {
         <Modal
           isOpen={showContactModal}
           onClose={() => setShowContactModal(false)}
-          className="max-w-2xl"
+          className="max-w-xl"
         >
           <ContactForm />
         </Modal>
