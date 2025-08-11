@@ -4,7 +4,7 @@ import { ProjectCard } from "@/layout/cards/project";
 export default function ProjectsShowcase() {
   return (
     <section className="lg:py-16 p-4 md:p-8 max-w-7xl mx-auto">
-      <div className="text-center mb-8 md:mb-16">
+      <div className="text-center mt-4 md:mt-0 mb-8 md:mb-16">
         <h2 className="text-4xl font-light tracking-wider text-gray-900 md:mb-4">
           PROJECTS
         </h2>

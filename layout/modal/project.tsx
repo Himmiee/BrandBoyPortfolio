@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { IProject } from "@/types/interface/hero.interface";
-import { Modal } from "./wrapper";
+
 import { Pause, Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { Modal } from "./wrapper";
 
 interface ProjectModalProps {
   project: IProject | null;

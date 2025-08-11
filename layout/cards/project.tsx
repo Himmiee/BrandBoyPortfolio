@@ -14,9 +14,12 @@ interface ProjectCardProps {
 export const ProjectCard = ({ project }: ProjectCardProps) => {
   const [open, setOpen] = useState(false);
 
-  // Autoplay plugin instance
   const autoplayRef = useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: false })
+    Autoplay({
+      delay: 3000,
+      stopOnInteraction: false,
+      playOnInit: false, 
+    })
   );
 
   const [emblaRef] = useEmblaCarousel({ loop: true }, [autoplayRef.current]);
@@ -24,9 +27,23 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
   const handleCardClick = () => setOpen(true);
   const handleModalClose = () => setOpen(false);
 
+  const handleMouseEnter = () => {
+    autoplayRef.current.play();
+  };
+
+  const handleMouseLeave = () => {
+    autoplayRef.current.stop();
+    autoplayRef.current.reset(); 
+  };
+
   return (
     <>
-      <div className="group cursor-pointer" onClick={handleCardClick}>
+      <div
+        className="group cursor-pointer"
+        onClick={handleCardClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className="relative overflow-hidden mb-6">
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">

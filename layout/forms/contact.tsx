@@ -4,7 +4,6 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
-// import { Label } from "@/components/ui/label";
 import { ContactFormData, contactSchema } from "@/helpers/schemas/schema";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,6 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import Image from "next/image";
+import BLogo from "@/public/logo/BrandBoy_Icon@4x.png";
 
 export const ContactForm: React.FC = () => {
   const {
@@ -30,26 +31,35 @@ export const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto font-opensans ">
+    <div className="w-full max-w-3xl mx-auto font-opensans">
+      {/* Logo & Tagline */}
       <div className="mb-6 text-center">
-        <h2 className="text-6xl font-bold text-gray-900 mb-2 pt-5 flex items-center justify-center">
-          B<span className="text-4xl font-bold">BRANDBOY</span>
-        </h2>
-        <p className="text-black text-[13px] font-medium">
+        <div className="flex items-center justify-center gap-3 pt-5 pb-2">
+          <Image
+            src={BLogo}
+            alt="BrandBoy Icon"
+            className="w-10 h-10 md:w-14 md:h-14"
+            priority
+          />
+        </div>
+
+        <p className="text-black text-[13px] font-medium mt-2">
           Interior Design | Construction | Branding Consultancy | Project
           Management
         </p>
-        <p className="pt-8  pb-4 font-bold text-xl md:text-4xl">
+
+        <p className="pt-8 pb-4 font-bold text-xl md:text-4xl">
           Let’s Bring Your Vision to Life
         </p>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 max-w-2xl mx-auto">
+      {/* Form */}
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="space-y-5 max-w-xl mx-auto"
+      >
         {/* Full Name */}
         <div>
-          {/* <Label htmlFor="fullName" className="block text-sm font-medium mb-1">
-            Full Name
-          </Label> */}
           <Input
             {...register("fullName")}
             id="fullName"
@@ -64,9 +74,6 @@ export const ContactForm: React.FC = () => {
 
         {/* Email */}
         <div>
-          {/* <Label htmlFor="email" className="block text-sm font-medium mb-1">
-            Business Email
-          </Label> */}
           <Input
             {...register("email")}
             id="email"
@@ -80,9 +87,6 @@ export const ContactForm: React.FC = () => {
 
         {/* Phone */}
         <div>
-          {/* <Label htmlFor="phone" className="block text-sm font-medium mb-1">
-            Phone Number
-          </Label> */}
           <Input
             {...register("phone")}
             id="phone"
@@ -96,9 +100,6 @@ export const ContactForm: React.FC = () => {
 
         {/* Project Type */}
         <div>
-          {/* <Label htmlFor="project" className="block text-sm font-medium mb-1">
-            Project Type
-          </Label> */}
           <Controller
             control={control}
             name="project"
@@ -125,15 +126,12 @@ export const ContactForm: React.FC = () => {
 
         {/* Message */}
         <div>
-          {/* <Label htmlFor="message" className="block text-sm font-medium mb-1">
-            Message
-          </Label> */}
           <textarea
             {...register("message")}
             id="message"
             rows={4}
             placeholder="Message / Special Request"
-            className="w-full px-4 py-3 border border-black/40 rounded-lg  outline-none transition-colors resize-none"
+            className="w-full px-4 py-3 border border-black/40 rounded-lg outline-none transition-colors resize-none"
           />
         </div>
 
