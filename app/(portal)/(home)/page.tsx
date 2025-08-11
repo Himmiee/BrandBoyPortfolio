@@ -1,4 +1,3 @@
-import { NavComponent } from "@/layout/nav";
 import { HeroSection } from "@/sections/home/hero";
 import ProjectsShowcase from "@/sections/home/projects";
 import { VideoSection } from "@/sections/home/videosection";

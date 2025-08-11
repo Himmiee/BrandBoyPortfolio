@@ -15,6 +15,9 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: "Brand Boy",
   description: "My Portfolio",
+  icons: {
+    icon: "/logo/BrandBoy_Icon@4x.png",
+  },
 };
 
 export default function RootLayout({

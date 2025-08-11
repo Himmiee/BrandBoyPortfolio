@@ -50,7 +50,7 @@ export const projects: IProject[] = [
     id: 1,
     title: "PROJECT ELOQUENCIA",
     description:
-      "Lorem ipsum dolor sit Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet",
+      "A study in warmth and craftsmanship, Eloquencia combines herringbone flooring, bespoke handmade doors, and calming art to create a space that feels quietly elevated. A mahogany dining table, suede furnishings, and a statement sideboard sculpted like an artwork complete the composition a home that speaks softly, yet with intent.",
     images: [
       {
         src: EloquenciaImgOne.src,
@@ -86,7 +86,7 @@ export const projects: IProject[] = [
     id: 2,
     title: "PROJECT RESILENCIA",
     description:
-      "Lorem ipsum dolor sit Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet",
+      "An upscale conversation nook designed for both display and dialogue. PSB frames high-end jewelry within a setting of travertine surfaces, gold accents, and coffered ceilings, creating a space where every interaction feels rare, refined, and purposeful.",
     images: [
       {
         src: ResilenciaImgOne.src,
@@ -162,7 +162,7 @@ export const projects: IProject[] = [
     id: 3,
     title: "PROJECT PSB",
     description:
-      "Lorem ipsum dolor sit Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet",
+      "Born from a desire to breathe new life into a familiar space, Resiliencia became a study in how design can feel both grounded and transformative. Through thoughtful layouts, custom pieces, and curated finishes, the project redefined its environment, an embodiment of Brandboy’s ethos of elegant evolution",
     images: [
       {
         src: PSBImgOne.src,
@@ -210,7 +210,7 @@ export const projects: IProject[] = [
     id: 4,
     title: "PROJECT TDC",
     description:
-      "Lorem ipsum dolor sit Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet",
+      "TDC challenged convention as a back-unit property that needed presence. We extruded the façade for visibility and introduced cladding solutions to air and refresh the bathrooms, turning structural constraints into a design statement that feels both functional and striking",
     images: [
       {
         src: TDCImgOne.src,
