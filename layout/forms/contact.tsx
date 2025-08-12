@@ -48,7 +48,7 @@ export const ContactForm: React.FC = () => {
           Management
         </p>
 
-        <p className="py-1  font-bold text-xl md:text-[34px]">
+        <p className="py-1  font-bold text-xl md:text-3xl">
           Let’s Bring Your Vision to Life
         </p>
       </div>
