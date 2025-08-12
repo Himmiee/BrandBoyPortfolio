@@ -56,7 +56,7 @@ export const ContactForm: React.FC = () => {
       {/* Form */}
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-5 max-w-xl mx-auto"
+        className="space-y-4 max-w-xl mx-auto"
       >
         {/* Full Name */}
         <div>
@@ -129,7 +129,7 @@ export const ContactForm: React.FC = () => {
           <textarea
             {...register("message")}
             id="message"
-            rows={4}
+            rows={3}
             placeholder="Message / Special Request"
             className="w-full px-4 py-3 border border-black/40 rounded-lg outline-none transition-colors resize-none"
           />
@@ -138,7 +138,7 @@ export const ContactForm: React.FC = () => {
         {/* Submit */}
         <Button
           type="submit"
-          className="bg-black w-full rounded-lg text-lg font-medium h-12"
+          className="bg-black w-full rounded-lg text-lg font-medium h-11"
         >
           Bring My Vision To Live
         </Button>
