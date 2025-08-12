@@ -44,6 +44,9 @@ import TDCImgFour from "@/public/projects/TDC/DSC_4.webp";
 import TDCImgFive from "@/public/projects/TDC/DSC_5.webp";
 import TDCImgSix from "@/public/projects/TDC/DSC_6.webp";
 import TDCImgSeven from "@/public/projects/TDC/DSC_7.webp";
+import GrafeioCImgOne from "@/public/projects/Graffeio/Grafeio 3D View 1.webp";
+import GrafieoImgTwo from "@/public/projects/Graffeio/Grafeio 3D View 2a.webp";
+import GrafieoImgThree from "@/public/projects/Graffeio/Grafeio 3D View 2a.webp";
 
 export const projects: IProject[] = [
   {
@@ -238,6 +241,26 @@ export const projects: IProject[] = [
       },
       {
         src: TDCImgSeven.src,
+        alt: "Modern dining room with warm tones and contemporary furniture",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "PROJECT GRAFEIO",
+    description:
+      "Grafeio challenged convention as a back-unit property that needed presence. We extruded the façade for visibility and introduced cladding solutions to air and refresh the bathrooms, turning structural constraints into a design statement that feels both functional and striking",
+    images: [
+      {
+        src: GrafeioCImgOne.src,
+        alt: "Modern dining room with warm tones and contemporary furniture",
+      },
+      {
+        src: GrafieoImgTwo.src,
+        alt: "Close-up of lighting design in Project Eloquencia",
+      },
+      {
+        src: GrafieoImgThree.src,
         alt: "Modern dining room with warm tones and contemporary furniture",
       },
     ],
