@@ -74,12 +74,12 @@ export const NavComponent: React.FC = () => {
         <Image
           src={BLogoWatermark}
           alt="BrandBoy Wordmark"
-          className="h-7 w-auto mx-auto"
+          className="h-6 md:h-7 w-auto mx-auto"
           priority
         />
       </div>
 
-      <div className="hidden md:flex px-8 py-2 justify-between max-w-3xl mx-auto font-myriad">
+      <div className="hidden md:flex px-8 pb-0 justify-between max-w-3xl mx-auto font-myriad">
         {navLinks.map((link, idx) => {
           const isContact = link.toLowerCase().includes("contact");
           return (
@@ -91,7 +91,7 @@ export const NavComponent: React.FC = () => {
                   ? undefined
                   : `#${link.toLowerCase().replace(/\s+/g, "")}`
               }
-              className="text-[30px]  font-medium text-black hover:text-gray-600 transition-colors cursor-pointer"
+              className="text-[26px]  font-medium text-black hover:text-gray-600 transition-colors cursor-pointer"
             >
               {link}
             </a>
