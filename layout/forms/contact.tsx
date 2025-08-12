@@ -138,7 +138,7 @@ export const ContactForm: React.FC = () => {
         {/* Submit */}
         <Button
           type="submit"
-          className="bg-black w-full rounded-lg text-lg font-medium h-11"
+          className="bg-black w-full rounded-lg text-base font-medium h-10"
         >
           Bring My Vision To Live
         </Button>
