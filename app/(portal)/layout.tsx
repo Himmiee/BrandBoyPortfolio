@@ -4,7 +4,7 @@ import noisyBg from "@/public/bg/noisyy-bg.webp";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="relative min-h-screen ">
+    <div className="relative min-h-screen">
       {/* Noise overlay */}
       <div
         style={{

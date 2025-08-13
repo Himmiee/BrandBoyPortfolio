@@ -44,6 +44,9 @@ import TDCImgFour from "@/public/projects/TDC/DSC_4.webp";
 import TDCImgFive from "@/public/projects/TDC/DSC_5.webp";
 import TDCImgSix from "@/public/projects/TDC/DSC_6.webp";
 import TDCImgSeven from "@/public/projects/TDC/DSC_7.webp";
+import GrafeioCImgOne from "@/public/projects/Graffeio/Grafeio 3D View 1.webp";
+import GrafieoImgTwo from "@/public/projects/Graffeio/Grafeio 3D View 2a.webp";
+import GrafieoImgThree from "@/public/projects/Graffeio/Grafeio 3D View 2a.webp";
 
 export const projects: IProject[] = [
   {
@@ -86,7 +89,7 @@ export const projects: IProject[] = [
     id: 2,
     title: "PROJECT RESILENCIA",
     description:
-      "An upscale conversation nook designed for both display and dialogue. PSB frames high-end jewelry within a setting of travertine surfaces, gold accents, and coffered ceilings, creating a space where every interaction feels rare, refined, and purposeful.",
+      "Born from a desire to breathe new life into a familiar space, Resiliencia became a study in how design can feel both grounded and transformative. Through thoughtful layouts, custom pieces, and curated finishes, the project redefined its environment, an embodiment of Brandboy’s ethos of elegant evolution",
     images: [
       {
         src: ResilenciaImgOne.src,
@@ -162,7 +165,7 @@ export const projects: IProject[] = [
     id: 3,
     title: "PROJECT PSB",
     description:
-      "Born from a desire to breathe new life into a familiar space, Resiliencia became a study in how design can feel both grounded and transformative. Through thoughtful layouts, custom pieces, and curated finishes, the project redefined its environment, an embodiment of Brandboy’s ethos of elegant evolution",
+      "An upscale conversation nook designed for both display and dialogue. PSB frames high-end jewelry within a setting of travertine surfaces, gold accents, and coffered ceilings, creating a space where every interaction feels rare, refined, and purposeful.",
     images: [
       {
         src: PSBImgOne.src,
@@ -238,6 +241,26 @@ export const projects: IProject[] = [
       },
       {
         src: TDCImgSeven.src,
+        alt: "Modern dining room with warm tones and contemporary furniture",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "PROJECT GRAFEIO",
+    description:
+      "Grafeio challenged convention as a back-unit property that needed presence. We extruded the façade for visibility and introduced cladding solutions to air and refresh the bathrooms, turning structural constraints into a design statement that feels both functional and striking",
+    images: [
+      {
+        src: GrafeioCImgOne.src,
+        alt: "Modern dining room with warm tones and contemporary furniture",
+      },
+      {
+        src: GrafieoImgTwo.src,
+        alt: "Close-up of lighting design in Project Eloquencia",
+      },
+      {
+        src: GrafieoImgThree.src,
         alt: "Modern dining room with warm tones and contemporary furniture",
       },
     ],
