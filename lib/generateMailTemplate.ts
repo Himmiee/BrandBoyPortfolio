@@ -13,7 +13,7 @@ export function generateContactEmailTemplate(data: {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>New Contact Form Submission</title>
 </head>
-<body style="margin:0; padding:0; font-family: 'Arial', sans-serif; background-color:#000;">
+<body style="margin:0; padding:0; font-family: 'Arial', sans-serif; background-color:#f2f4f6;">
   <table width="100%" cellpadding="0" cellspacing="0" style="padding: 20px 0;">
     <tr>
       <td align="center">
@@ -22,7 +22,7 @@ export function generateContactEmailTemplate(data: {
           
           <!-- Header -->
           <tr>
-            <td style="background-color:#1fc8e4; padding: 40px 20px; text-align:center; color:#ffffff;">
+            <td style="background-color:#000; padding: 40px 20px; text-align:center; color:#ffffff;">
               <div style="font-size:36px; font-weight:bold; margin-bottom:10px;">✨ BrandBoy</div>
               <p style="font-size:14px; opacity:0.9; margin:0;">Interior Design | Construction | Branding | Project Management</p>
             </td>
@@ -44,7 +44,7 @@ export function generateContactEmailTemplate(data: {
                   { label: "Phone Number", value: data.phone },
                   {
                     label: "Project Type",
-                    value: `<span style="background-color:#1fc8e4; color:#fff; padding:6px 12px; border-radius:20px; font-size:14px;">${data.project}</span>`,
+                    value: `<span style="background-color:#000; color:#fff; padding:6px 12px; border-radius:20px; font-size:14px;">${data.project}</span>`,
                   },
                 ]
                   .map(
@@ -66,7 +66,7 @@ export function generateContactEmailTemplate(data: {
               ${
                 data.message
                   ? `
-                <div style="background-color:#f9fafb; border-left:4px solid #1fc8e4; border-radius:8px; padding:20px; margin-top:15px;">
+                <div style="background-color:#f9fafb; border-left:4px solid #000; border-radius:8px; padding:20px; margin-top:15px;">
                   <h3 style="margin:0 0 10px 0; font-size:16px; color:#333333;">📝 Message / Special Request</h3>
                   <p style="margin:0; font-size:14px; color:#555555; font-style:italic; line-height:1.6;">"${data.message}"</p>
                 </div>
@@ -75,7 +75,7 @@ export function generateContactEmailTemplate(data: {
               }
 
               <!-- CTA -->
-              <div style="background-color:#1fc8e4; color:#ffffff; text-align:center; padding:20px; border-radius:12px; margin-top:25px;">
+              <div style="background-color:#000; color:#ffffff; text-align:center; padding:20px; border-radius:12px; margin-top:25px;">
                 <p style="margin:0; font-size:16px; line-height:1.5;">
                   <strong>Ready to transform their vision into reality?</strong><br>
                   Reach out and let's create something amazing together!
@@ -87,7 +87,7 @@ export function generateContactEmailTemplate(data: {
 
           <!-- Footer -->
           <tr>
-            <td style="background-color:#000; padding:20px; text-align:center; font-size:12px; color:#999999;">
+            <td style="background-color:#f2f4f6; padding:20px; text-align:center; font-size:12px; color:#999999;">
               <p style="margin:0;">This message was sent from your BrandBoy contact form</p>
               <p style="margin:5px 0 0 0;">${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}</p>
             </td>
