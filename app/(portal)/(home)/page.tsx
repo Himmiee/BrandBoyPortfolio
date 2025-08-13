@@ -5,8 +5,8 @@ import { VideoSection } from "@/sections/home/videosection";
 const HomePage = () => {
   return (
     <>
-      <HeroSection />
       <VideoSection />
+      <HeroSection />
       <ProjectsShowcase />
     </>
   );

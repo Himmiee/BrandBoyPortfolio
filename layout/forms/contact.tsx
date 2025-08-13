@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/select";
 import Image from "next/image";
 import BLogo from "@/public/logo/BrandBoy_Icon@4x.png";
+import { sendMail } from "@/lib/sendMail";
+import { generateContactEmailTemplate } from "@/lib/generateMailTemplate";
 
 export const ContactForm: React.FC = () => {
   const {
@@ -26,21 +28,40 @@ export const ContactForm: React.FC = () => {
     resolver: zodResolver(contactSchema),
   });
 
-  const onSubmit = async (data: ContactFormData) => {
-    console.log(data);
-  };
+
+const onSubmit = async (data: ContactFormData) => {
+  const htmlTemplate = generateContactEmailTemplate({
+    fullName: data.fullName,
+    email: data.email,
+    phone: data.phone,
+    project: data.project,
+    message: data.message,
+  });
+
+  const response = await sendMail({
+    email: data.email,
+    subject: `New Contact: ${data.fullName} - ${data.project} Project`,
+    text: `Name: ${data.fullName}\nEmail: ${data.email}\nPhone: ${
+      data.phone
+    }\nProject: ${data.project}${
+      data.message ? `\nMessage: ${data.message}` : ""
+    }`,
+    html: htmlTemplate,
+  });
+
+  if (response?.messageId) {
+    console.log("Application Submitted Successfully.");
+  } else {
+    console.log("Failed To send application.");
+  }
+};
 
   return (
     <div className="w-full max-w-lg mx-auto font-opensans">
       {/* Logo & Tagline */}
       <div className="mb-2 text-center">
         <div className="flex items-center justify-center gap-3 pt-5 pb-2">
-          <Image
-            src={BLogo}
-            alt="BrandBoy Icon"
-            className="w-8 h-8"
-            priority
-          />
+          <Image src={BLogo} alt="BrandBoy Icon" className="w-8 h-8" priority />
         </div>
 
         <p className="text-black text-[13px] font-medium mt-2">

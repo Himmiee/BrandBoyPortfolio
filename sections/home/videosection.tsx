@@ -72,13 +72,13 @@ export const VideoSection: React.FC = () => {
   };
 
   return (
-    <section className="relative">
+    <section className="relative pt-6">
       <BackgroundImageWrapper
         image={vidImg}
         alt="Video section background"
         className=""
       >
-        <div className="relative z-10 flex flex-col items-center justify-center text-center font-opensans min-h-[60vh] gap-8 text-white px-4 py-12">
+        <div className="relative z-10 flex flex-col items-center justify-center text-center font-opensans min-h-[60vh] md:min-h-[50vh] lg:min-h-[70vh] gap-8 text-white px-4 py-12">
           {showVideo ? (
             <div className="w-full max-w-md mx-auto space-y-10 animate-in fade-in-50 zoom-in-95 duration-700">
               <div className="text-center space-y-4">
@@ -173,7 +173,7 @@ export const VideoSection: React.FC = () => {
             </div>
           ) : (
             <>
-              <div className="space-y-16 max-w-4xl">
+              <div className="space-y-12 md:space-y-28 max-w-4xl">
                 <p className="text-sm md:text-4xl font-medium tracking-[0.2em] uppercase opacity-80 font-myriad ">
                   Video Feature
                 </p>
@@ -186,19 +186,18 @@ export const VideoSection: React.FC = () => {
                     A High-End Interior Reveal
                   </p>
                 </div>
-              </div>
+                <div className="relative group">
+                  <Button
+                    variant="whiteOutline"
+                    size="lg"
+                    className="rounded-full px-8 py-6 text-base md:text-lg font-medium border-2 border-white/30 hover:border-white/60 bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-all duration-500 group-hover:scale-105 transform"
+                    onClick={() => setShowVideo(true)}
+                  >
+                    <span className="flex items-center gap-3">WATCH VIDEO</span>
+                  </Button>
 
-              <div className="relative group py-6 md:py-0">
-                <Button
-                  variant="whiteOutline"
-                  size="lg"
-                  className="rounded-full px-8 py-6 text-base md:text-lg font-medium border-2 border-white/30 hover:border-white/60 bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-all duration-500 group-hover:scale-105 transform"
-                  onClick={() => setShowVideo(true)}
-                >
-                  <span className="flex items-center gap-3">WATCH VIDEO</span>
-                </Button>
-
-                <div className="absolute inset-0 rounded-full bg-white/10 blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10"></div>
+                  <div className="absolute inset-0 rounded-full bg-white/10 blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10"></div>
+                </div>
               </div>
             </>
           )}

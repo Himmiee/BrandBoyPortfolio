@@ -89,7 +89,7 @@ export const projects: IProject[] = [
     id: 2,
     title: "PROJECT RESILENCIA",
     description:
-      "An upscale conversation nook designed for both display and dialogue. PSB frames high-end jewelry within a setting of travertine surfaces, gold accents, and coffered ceilings, creating a space where every interaction feels rare, refined, and purposeful.",
+      "Born from a desire to breathe new life into a familiar space, Resiliencia became a study in how design can feel both grounded and transformative. Through thoughtful layouts, custom pieces, and curated finishes, the project redefined its environment, an embodiment of Brandboy’s ethos of elegant evolution",
     images: [
       {
         src: ResilenciaImgOne.src,
@@ -165,7 +165,7 @@ export const projects: IProject[] = [
     id: 3,
     title: "PROJECT PSB",
     description:
-      "Born from a desire to breathe new life into a familiar space, Resiliencia became a study in how design can feel both grounded and transformative. Through thoughtful layouts, custom pieces, and curated finishes, the project redefined its environment, an embodiment of Brandboy’s ethos of elegant evolution",
+      "An upscale conversation nook designed for both display and dialogue. PSB frames high-end jewelry within a setting of travertine surfaces, gold accents, and coffered ceilings, creating a space where every interaction feels rare, refined, and purposeful.",
     images: [
       {
         src: PSBImgOne.src,
