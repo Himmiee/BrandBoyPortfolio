@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Open_Sans } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 const playfairDisplay = Playfair_Display({
@@ -31,6 +32,7 @@ export default function RootLayout({
         className={`${playfairDisplay.variable} ${openSans.variable} antialiased`}
       >
         {children}
+        <Toaster position="top-right"  />
       </body>
     </html>
   );
