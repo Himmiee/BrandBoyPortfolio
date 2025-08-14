@@ -26,7 +26,7 @@ export default function ProjectsShowcase() {
   };
 
   return (
-    <section className="lg:py-6 px-4 md:px-8 max-w-7xl mx-auto">
+    <section id="projects" className="lg:py-6 px-4 md:px-8 max-w-7xl mx-auto">
       <div className="flex items-center md:justify-between my-4 md:mb-0">
         <h2 className="text-3xl md:text-4xl font-light tracking-wider text-gray-900 md:mb-4">
           PROJECTS
